@@ -1,0 +1,28 @@
+\begin{thebibliography}{1}
+
+\bibitem{beig2018scalable}
+M.~Beig, {\em Scalable immersive audio for virtual environments}.
+\newblock PhD thesis, 2018.
+
+\bibitem{koontzstate}
+W.~L. Koontz, ``State space filters for artificial reverberation effects,''
+
+\bibitem{johnsonperceptually}
+D.~Johnson and H.~Lee, ``Perceptually optimised virtual room acoustics,''
+
+\bibitem{abel2010estimating}
+J.~S. Abel, N.~J. Bryan, P.~P. Huang, M.~Kolar, and B.~V. Pentcheva,
+  ``Estimating room impulse responses from recorded balloon pops,'' in {\em
+  Audio Engineering Society Convention 129}, Audio Engineering Society, 2010.
+
+\bibitem{parker2016artificial}
+V.~Välimäki, J.~D. Parker, L.~Savioja, J.~O. Smith, and J.~S. Abel, ``More
+  than 50 years of artificial reverberation,'' Feb 2016.
+\newblock Available:
+  https://mycourses.aalto.fi/pluginfile.php/46618/course/section/19552/Artificial%20reverberation%20algorithms.pdf.
+
+\bibitem{schroeder1961colorless}
+M.~R. Schroeder and B.~F. Logan, ``" colorless" artificial reverberation,''
+  {\em IRE Transactions on Audio}, vol.~9, no.~6, pp.~209--214, 1961.
+
+\end{thebibliography}
