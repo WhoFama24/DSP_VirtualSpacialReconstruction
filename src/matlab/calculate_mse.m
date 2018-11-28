@@ -25,6 +25,7 @@ impulse_response_files = [
     '\Impulse 3.wav'
 ];
 
+mse_log = [];
 more off;   # allows printing to console during FOR loop
 for i = 1:2:length(locations(:,1))
     for j = 1:2:length(input_samples_files(:,1))
@@ -79,6 +80,7 @@ for i = 1:2:length(locations(:,1))
         end
 
         mse = immse(real_output_normalized, sim_output_normalized);
+        mse_log = [mse_log mse];
         fprintf("%s for %s: MSE = %f\n\n", locations(i+1,:), input_samples_files(j+1,2:end), mse);
     end
 end
