@@ -80,13 +80,23 @@ This application is beyond the scope of this project, but serves as an example o
 For system performance analysis, the output of the artificial space is compared to the captured output of the real-world space for controlled inputs.
 
 \section*{Introduction}
-TODO: We need to rephrase our literature review to fit here as an introduction and background for the project.
+The objective of this project is to design a system to artificially reconstruct the spacial presence of an environment using the environment's impulse response.
+This system has applications in virtual reality \cite{beig2018scalable} where realistic acoustic feedback is necessary for improving the user experience.
+Additionally, the system could be applied in live audio performances where the audio engineer must consider the frequency response of the environment.
+According to \cite{johnsonperceptually}, proper reverb is crucial to the improved subjective quality of a sound.
+Designing a system to artificially reconstruct an environment requires capturing the impulse response and artificially reconstructing the sound.
 
     \subsection*{Capturing the Impulse Response of a Space}
-
+    The impulse response of the environment is critical to the process of reconstructing its spacial presence.
+    Capturing the impulse response is a two-part process --- generate an acoustical impulse and measure the response of the space.
+    An acoustical impulse needs to be a nearly instantaneous burst of sound.
+    There are specialized devices to generate an acoustical impulse, but these devices are costly and usually impractical for the identified applications of this system.
+    Based on research presented by the Audio Engineering Society \cite{abel2010estimating}, popping a balloon can serve as a replacement for acoustical impulse generation devices in most situations.
+    Other research suggested a person clapping his hands in the space to create the impulse.
+    The balloon pop method was used in this project because of its low cost and ease of repeating performance, which would be difficult if clapping hands.
 
     \subsection*{Simulating Audio Responses of a Space}
-
+    
 
 \section*{Methodology \& Theory}
 

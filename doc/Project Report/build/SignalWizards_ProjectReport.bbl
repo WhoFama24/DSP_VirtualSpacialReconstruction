@@ -1,3 +1,15 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{beig2018scalable}
+M.~Beig, {\em Scalable immersive audio for virtual environments}.
+\newblock PhD thesis, 2018.
+
+\bibitem{johnsonperceptually}
+D.~Johnson and H.~Lee, ``Perceptually optimised virtual room acoustics,''
+
+\bibitem{abel2010estimating}
+J.~S. Abel, N.~J. Bryan, P.~P. Huang, M.~Kolar, and B.~V. Pentcheva,
+  ``Estimating room impulse responses from recorded balloon pops,'' in {\em
+  Audio Engineering Society Convention 129}, Audio Engineering Society, 2010.
 
 \end{thebibliography}
