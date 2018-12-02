@@ -15,6 +15,7 @@
 % \usepackage[numbered, framed]{matlab-prettifier}
 \usepackage{rotating}
 \usepackage{hyperref}
+\usepackage{needspace}
 
 % Variables
 \newcommand{\thisassignment}{Graduate Project Report}
@@ -63,7 +64,7 @@
         Leader                           & Member
     \end{tabular}
 }
-\date{\today}
+\date{December 2, 2018}
 
 % Body
 \begin{document}
@@ -79,6 +80,7 @@ Additionally, this system could reduce configuration time for public address (PA
 This application is beyond the scope of this project, but serves as an example of the potential applications this experiment.
 For system performance analysis, the output of the artificial space is compared to the captured output of the real-world space for controlled inputs.
 
+\Needspace{10\baselineskip}
 \section*{Introduction}
 The objective of this project is to design a system to artificially reconstruct the spacial presence of an environment using the environment's impulse response.
 This system has applications in virtual reality \cite{beig2018scalable} where realistic acoustic feedback is necessary for improving the user experience.
@@ -93,17 +95,58 @@ Designing a system to artificially reconstruct an environment requires capturing
     There are specialized devices to generate an acoustical impulse, but these devices are costly and usually impractical for the identified applications of this system.
     Based on research presented by the Audio Engineering Society \cite{abel2010estimating}, popping a balloon can serve as a replacement for acoustical impulse generation devices in most situations.
     Other research suggested a person clapping his hands in the space to create the impulse.
-    The balloon pop method was used in this project because of its low cost and ease of repeating performance, which would be difficult if clapping hands.
+    The balloon pop method is used in this project because of its low cost and ease of repeating performance, which would be difficult if clapping hands.
 
     \subsection*{Simulating Audio Responses of a Space}
-    
 
+\Needspace{10\baselineskip}
 \section*{Methodology \& Theory}
+Using Matlab, the spacial presence of five locations is artificially reconstructed.
+Each environment has an infinite impulse response (IIR) that defines the reverberation that occurs in the space.
+Since this impulse response is infinite in length and cannot be captured by a digital signal processing system, the objective of this experiment is to determine a FIR filter that approximates the impulse response of the IIR filter.
+An FIR approximation of each space is obtained by inputting a impulse in the space and recording the output using a microphone.
+Because of the sampling rate and duration of sampling, this produces an FIR filter with a length of at least 50,000.
+While a large filter may not be practical for real-time implementation, there are applications in post-processing effects and room analysis that do not require real-time speed.
+However, a stretch goal is to minimze the filter size without an appreciative loss in quality, as determined by the qualitative analysis, so that the filters may be used in applications such as live performances or virtual reality simulations.
+The experiment is conducted by measuring the room impulse response (RIR), inputting an audio sample into the room while recording the output, and comparing to a synthesized version of the output from Matlab.
+To provide a variety of reverberation scenarios, the RIR is captured from the following locations:
 
+\begin{itemize}
+    \item Eric Farmer's Living room
+    \item Simrall Hall Anechoic Chamber
+    \item Simrall Hall Stairwell
+    \item MSU SSRC Foyer
+    \item MSU Old Intramural Fields.
+\end{itemize}
 
+The first step to measuring the RIR is to determine the noise floor of the room and the microphone.
+This is accomplished by observing the output of the room when there is no input.
+Using identical balloons filled to the same circumference, the balloon pop simulates the impulse input into each space.
+To prevent uneven spacial effects, the balloon and microphone are colocated in the center of the space.
+An operator pops the balloon above the microphone using a sharp needle while standing an arm's length away.
+The microphone records the response of the room.
+The operator is not colocated with the microphone and the balloon to prevent distortions in the reverbation.
+The microphone records the impulse response until the room returns to a threshold set by the root mean square (RMS) of the noise floor.
+This process determines a large FIR filter for the space and is repeated for each location.
+
+After measuring the RIR and the space has returned to its noise floor, each audio input sample is played and the output of the room recorded on the microphone.
+To prevent spacial distortions, the audio input sample is played through a single speaker colocated under the microphone.
+Both the speaker and the microphone are positioned such that the focus of the output/input is upward.
+This process is repeated for each location.
+
+After collecting the RIR for each space, Matlab is used to convolve each audio input sample with each spacial impulse response.
+This provides a set of simulated outputs versus a set of real outputs for each location.
+Qualitative and quantitative measurements were obtained comparing the simulated and real outputs, which is discussed in the following section.
+
+The stretch goal is performed by using Matlab to decimate the filter and calculating the output for each audio input sample at each location.
+The decimation is performed on the set of decimation factors, $D = [2, 4, 8, 16, 32, 64, 128, 256]$.
+Due to the amount of samples generated by this process, only the speech samples were qualitatively measured.
+
+\Needspace{10\baselineskip}
 \section*{Analysis of Results}
 
 
+\Needspace{10\baselineskip}
 \section*{Conclusion}
 
 
