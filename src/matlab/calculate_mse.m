@@ -42,12 +42,12 @@ for i = 1:2:length(locations(:,1))
 
         % Load Real Output Sample
         [real_output, fs_real] = audioread(strcat(output_path_real, locations(i,:), input_samples_files(j+1,:)));
-        real_output_normalized = real_output ./ max(abs(real_output));
+        real_output_normalized = real_output ./ abs(max(abs(real_output)));
         real_output_normalized = real_output_normalized.';
 
         % Calculate Simulate Output Sample
         sim_output = conv(h, x(:,1));
-        sim_output_normalized = sim_output ./ max(abs(sim_output));
+        sim_output_normalized = sim_output ./ abs(max(abs(sim_output)));
         sim_output_normalized = sim_output_normalized.';
 
 
