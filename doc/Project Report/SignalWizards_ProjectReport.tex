@@ -72,7 +72,7 @@
 \maketitle
 \newpage
 
-\section*{Abstract}
+\section{Abstract}
 The objective of this project is to create a system that artificially reconstructs the reverberative properties of an environment.
 By capturing the impulse response of the designated space, this system allows the user to simulate the space's acoustics for various inputs.
 This ability is useful for sound engineers to test audio performance in different environments without the difficulty of a real-world experiment.
@@ -81,7 +81,7 @@ This application is beyond the scope of this project, but serves as an example o
 For system performance analysis, the output of the artificial space is compared to the captured output of the real-world space for controlled inputs.
 
 \Needspace{10\baselineskip}
-\section*{Introduction}
+\section{Introduction}
 The objective of this project is to design a system to artificially reconstruct the spacial presence of an environment using the environment's impulse response.
 This system has applications in virtual reality \cite{beig2018scalable} where realistic acoustic feedback is necessary for improving the user experience.
 Additionally, the system could be applied in live audio performances where the audio engineer must consider the frequency response of the environment.
@@ -100,23 +100,32 @@ Designing a system to artificially reconstruct an environment requires capturing
     \subsection*{Simulating Audio Responses of a Space}
 
 \Needspace{10\baselineskip}
-\section*{Methodology \& Theory}
+\section{Methodology \& Theory}
 Using Matlab, the spacial presence of five locations is artificially reconstructed.
 Each environment has an infinite impulse response (IIR) that defines the reverberation that occurs in the space.
 Since this impulse response is infinite in length and cannot be captured by a digital signal processing system, the objective of this experiment is to determine a FIR filter that approximates the impulse response of the IIR filter.
 An FIR approximation of each space is obtained by inputting a impulse in the space and recording the output using a microphone.
-Because of the sampling rate and duration of sampling, this produces an FIR filter with a length of at least 50,000.
+Because of the sampling rate and duration of sampling, the FIR may become large compared to usual filters.
 While a large filter may not be practical for real-time implementation, there are applications in post-processing effects and room analysis that do not require real-time speed.
 However, a stretch goal is to minimze the filter size without an appreciative loss in quality, as determined by the qualitative analysis, so that the filters may be used in applications such as live performances or virtual reality simulations.
 The experiment is conducted by measuring the room impulse response (RIR), inputting an audio sample into the room while recording the output, and comparing to a synthesized version of the output from Matlab.
 To provide a variety of reverberation scenarios, the RIR is captured from the following locations:
-
 \begin{itemize}
     \item Eric Farmer's Living room
     \item Simrall Hall Anechoic Chamber
     \item Simrall Hall Stairwell
     \item MSU SSRC Foyer
     \item MSU Old Intramural Fields.
+\end{itemize}
+
+The following is an equipment list used for this project:
+\begin{itemize}
+    \item Balloons: \href{https://www.amazon.com/gp/product/B01LBTKVDY/ref=oh_aui_detailpage_o04_s00?ie=UTF8&psc=1}{Nexci Premium Quality 12in. Helium or Air Balloons}
+    \item Microphone: \href{https://dbxpro.com/en/products/rta-m}{dbx RTA-M Reference Microphone}
+    \item Speaker: \href{https://www.edifier.com/int/en/speakers/studio-1280t-2.0-powered-bookshelf}{Edifier R1280T Powered Bookshelf Speaker}
+    \item Mixer/Preamp: \href{https://assets.peavey.com/literature/manuals/117405_9170.pdf}{Peavey XR\texorpdfstring{\textsuperscript{\textregistered}} 8300 Powered Mixer}
+    \item Recording Software: \href{https://www.audacityteam.org/}{Audacity\texorpdfstring{\textsubscript{\textregistered}} v2.3.0}
+    \item Simulation Software: \href{https://www.gnu.org/software/octave/}{GNU Octave v4.2.2}
 \end{itemize}
 
 The first step to measuring the RIR is to determine the noise floor of the room and the microphone.
@@ -127,7 +136,7 @@ An operator pops the balloon above the microphone using a sharp needle while sta
 The microphone records the response of the room.
 The operator is not colocated with the microphone and the balloon to prevent distortions in the reverbation.
 The microphone records the impulse response until the room returns to a threshold set by the root mean square (RMS) of the noise floor.
-This process determines a large FIR filter for the space and is repeated for each location.
+This process determines a large FIR filter for the space and is repeated three times for each location.
 
 After measuring the RIR and the space has returned to its noise floor, each audio input sample is played and the output of the room recorded on the microphone.
 To prevent spacial distortions, the audio input sample is played through a single speaker colocated under the microphone.
@@ -143,14 +152,62 @@ The decimation is performed on the set of decimation factors, $D = [2, 4, 8, 16,
 Due to the amount of samples generated by this process, only the speech samples were qualitatively measured.
 
 \Needspace{10\baselineskip}
-\section*{Analysis of Results}
+\section{Analysis of Results}
+After performing the actions described in the Methodology \& Theory section, the results were analyzed quantitatively and qualitatively.
+For the quantitative analysis, a mean square error (MSE) was generated to determine the difference between the simulated and the real outputs.
+For the qualitative analysis, a test group of five people was selected to listen to the simulated and real outputs and give an opinion on the similarities of the samples.
+The qualitative scale was selected to be the following:
+\begin{itemize}
+    \item 1 - Nearly identical sounds; minimal distinguishable features
+    \item 0.5 - Similar sounds; the simulated version could pass as a replacement for the real version in some situations
+    \item 0 - Dissimilar sounds; the simulated version fails as a replacement for the real version
+\end{itemize}
 
+Based on plots of the three impulse responses collected at each of the five locations, the third impulse response was selected for each location to be representative of the set.
+This was done to decrease the processing time and increase the code simplicity.
+TODO
 
 \Needspace{10\baselineskip}
-\section*{Conclusion}
-
+\section{Conclusion}
+TODO:
+Discuss things to improve:
+- Select the impulse response that generated the minimal MSE from the set for each location.
+- Discuss microphone/speaker nonlinearities in frequency response
 
 \newpage
+\appendix
+\section{Location Photos}
+% \begin{figure}[h!t]
+%     \includegraphics[width=0.8\textwidth]{"../Location Photos/SignalWizards_AnechoicChamber"}
+%     \centering
+%     \caption{Location 1: Anechoic Chamber}
+% \end{figure}
+%
+% \begin{figure}[h!t]
+%     \includegraphics[width=0.8\textwidth]{"../Location Photos/SignalWizards_LivingRoom"}
+%     \centering
+%     \caption{Location 2: Eric Farmer's Living Room}
+% \end{figure}
+%
+% \begin{figure}[h!t]
+%     \includegraphics[width=0.8\textwidth]{"../Location Photos/SignalWizards_OldIntramuralField"}
+%     \centering
+%     \caption{Location 3: MSU Old Intramural Field}
+% \end{figure}
+%
+% \begin{figure}[h!t]
+%     \includegraphics[width=0.8\textwidth]{"../Location Photos/SignalWizards_SimrallStairwell"}
+%     \centering
+%     \caption{Location 4: Simrall Stairwell}
+% \end{figure}
+%
+% \begin{figure}[h!t]
+%     \includegraphics[width=0.8\textwidth]{"../Location Photos/SignalWizards_SSRCFoyer"}
+%     \centering
+%     \caption{Location 5: MSU SSRC Foyer}
+% \end{figure}
+
+\clearpage
 \bibliography{SignalWizards_ProjectReport}
 \bibliographystyle{ieeetr}
 
