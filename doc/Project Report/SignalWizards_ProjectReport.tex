@@ -16,7 +16,7 @@
 \usepackage{hyperref}
 \usepackage{needspace}
 \usepackage{appendix}
-\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage[linesnumbered,lined,boxed]{algorithm2e}
 
 % Variables
 \newcommand{\thisassignment}{Graduate Project Report}
@@ -175,15 +175,25 @@ This was accomplished using \texttt{calculate\_mse.m} from Appendix~\ref{appendi
     \label{alg:mse}
     \DontPrintSemicolon
 
+    \SetKwData{Sim}{sim\_sample} \SetKwData{Real}{real\_sample} \SetKwData{IndxSim}{indx\_sim} \SetKwData{IndxReal}{indx\_real}
+    \SetKwFunction{Normalize}{normalize} \SetKwFunction{Immse}{immse} \SetKwFunction{Find}{find} \SetKwFunction{Max}{max} \SetKwFunction{Zeropad}{zeropad}
+    \SetKwFunction{Length}{length} \SetKwFunction{Trunc}{truncate}
+
     \KwIn{Simulated Sample; Real Sample}
     \KwOut{MSE between the two samples}
-    \Blankline
-    Normalize samples to have a maximum amplitude of $1$\;
-    Apply Butterworth LPF to samples\;
-    Find where each sample first crosses a threshold value\;
-    Zero-pad the appropriate sample to align the threshold indices\;
-    Truncate the longer sample to match the length of the shortest sample\;
-    Run \emph{immse}
+    \BlankLine
+    \ForEach{$loc \leftarrow locations$}{
+        \Sim $\leftarrow$ \Normalize{simulated sample at $loc$}\;
+        \Real $\leftarrow$ \Normalize{real sample at $loc$}\;
+        Apply Butterworth LPF to \Sim \& \Real\;
+        \IndxSim $\leftarrow$ \Find{\Sim $>$ \Max{\Sim}}\;
+        \IndxReal $\leftarrow$ \Find{\Real $>$ \Max{\Real}}\;
+        \If{\IndxSim $<$ \IndxReal}{\Zeropad{\Sim}}
+        \Else{\Zeropad{\Real}}
+        \If{\Length{\Sim} $<$ \Length{\Real}}{\Trunc{\Real}}
+        \Else{\Trunc{\Sim}}
+        \Immse{\Sim, \Real}\;
+    }
 \end{algorithm}
 
 
