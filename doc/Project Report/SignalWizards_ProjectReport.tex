@@ -78,7 +78,7 @@ The objective of this project is to create a system that artificially reconstruc
 By capturing the impulse response of the designated space, this system allows the user to simulate the space's acoustics for various inputs.
 This ability is useful for sound engineers to test audio performance in different environments without the difficulty of a real-world experiment.
 Additionally, this system could reduce configuration time for public address (PA) systems by allowing the user to identify anomalies in the space's frequency response.
-This application is beyond the scope of this project, but serves as an example of the potential applications this experiment.
+This application is beyond the scope of this project, but serves as an example of the potential applications of this experiment.
 For system performance analysis, the output of the artificial space is compared to the captured output of the real-world space for controlled inputs.
 
 \Needspace{10\baselineskip}
@@ -86,7 +86,7 @@ For system performance analysis, the output of the artificial space is compared 
 The objective of this project is to design a system to artificially reconstruct the spacial presence of an environment using the environment's impulse response.
 This system has applications in virtual reality \cite{beig2018scalable} where realistic acoustic feedback is necessary for improving the user experience.
 Additionally, the system could be applied in live audio performances where the audio engineer must consider the frequency response of the environment.
-According to \cite{johnsonperceptually}, proper reverb is crucial to the improved subjective quality of a sound.
+According to Johnson and Lee \cite{johnsonperceptually}, proper reverb is crucial to the improved subjective quality of a sound.
 Designing a system to artificially reconstruct an environment requires capturing the impulse response and artificially reconstructing the sound.
 
     \subsection*{Capturing the Impulse Response of a Space}
@@ -99,7 +99,11 @@ Designing a system to artificially reconstruct an environment requires capturing
     The balloon pop method is used in this project because of its low cost and ease of repeating performance, which would be difficult if clapping hands.
 
     \subsection*{Simulating Audio Responses of a Space}
-    Once a spatial impulse response has been captured and recorded, it can be used with a linear convolution to simulate the systemic output of the space. In short, the reverberative effects and frequency response of the space can be applied to any arbitrary input signal. Additionally, the impulse response can be transformed into the frequency domain to compute its frequency and phase response. The benefit of these effects is twofold. Firstly, the measured impulse response can be used as an audio effect allowing the audio acoustics of the room to be used in musical and vocal effects. Secondly, information about the room itself can be leveraged -- the frequency response can be used to pinpoint resonant frequencies in the room. This data is useful for tuning audio systems or modifying the room itself to manipulate the frequency response.
+    Once a spatial impulse response has been captured and recorded, it can be used with a linear convolution to simulate the systemic output of the space.
+    In short, the reverberative effects and frequency response of the space can be applied to any arbitrary input signal. Additionally, the impulse response can be transformed into the frequency domain to compute its frequency and phase response.
+    The benefit of these effects is twofold. Firstly, the measured impulse response can be used as an audio effect allowing the audio acoustics of the room to be used in musical and vocal effects.
+    Secondly, information about the room itself can be leveraged -- the frequency response can be used to pinpoint resonant frequencies in the room.
+    This data is useful for tuning audio systems or modifying the room itself to manipulate the frequency response.
 
 \Needspace{10\baselineskip}
 \section{Methodology \& Theory}
@@ -200,7 +204,10 @@ The qualitative scale was selected to be the following:
 
 The results of the qualitative and quantitative analysis are shown in Figure~\ref{fig:mseResults} and Figure~\ref{fig:decimatedResults}.
 The plot in Figure~\ref{fig:mseCorrelation} was designed to determine if a correlation existed between MSE and the qualitative measurements.
+From this  plot, it can generally be assumed that an inverse relationship between the MSE and the qualitative measurement exists.
+However, due to the number of outlying data points, more research is necessary to determine any more meaningful results.
 The plot in Figure~\ref{fig:decimatedCorrelation} shows the correlation between the decimation factor and the qualitative measurements.
+From this plot, an increase in the decimation factor resulted in a qualitatively-worse sounding sample.
 
 \begin{figure}[ht]
     \includegraphics[width=0.5\textwidth]{"img/fig_Results"}
@@ -232,10 +239,25 @@ The plot in Figure~\ref{fig:decimatedCorrelation} shows the correlation between 
 
 \clearpage
 \section{Conclusion}
-TODO:
-Discuss things to improve:
-- Select the impulse response that generated the minimal MSE from the set for each location.
-- Discuss microphone/speaker nonlinearities in frequency response
+In conclusion, this project generated acoustical responses of five distinct locations and compared them to the real responses.
+Additionally, the simulated responses were generated using a decimated version of the impulse response, and the resulting sample was compared to the original simulated sample.
+Overall, this project demonstrated some interesting results about the correlation of the MSE with the quality of the simulated output.
+Generally, it was observed that a smaller MSE meant a higher quality simulated output.
+But, since the dataset was small and there were a relatively large number of outliers, it is difficult to ascertain what level of MSE is acceptable for a quality simulation.
+Further testing to generate more samples is required to determine more correlations.
+For the stretch goal, it was found that an increase in the decimation factor resulted in a worse quality simulation.
+
+From the data, there are some inconsistent patterns between the MSE and the simulation quality.
+These inconsistencies are most likely due to sources of error in the experiment.
+There are two major sources of error identified with this experiment.
+First, the speaker and microphone most likely have nonlinearities in their frequency response, especially the speaker.
+A nonlinearity in the speaker would generate some differences in the real outputs that would not be observed in the simulated outputs.
+Secondly, for the sake of code simplicity, the third impulse response was chosen for each location because it was generally representative of the set.
+However, a better method of selection would have been to simulate each input sample with each impulse response at each location and then select the impulse response with the minimum MSE.
+
+Overall, the results of this experiment are a good starting point for attempting to accurately simulate the spacial effects of a space.
+Further work could be performed in this area to determine if a correlation exists between MSE and the quality of the simulation, and if there are any other factors that affect the quality.
+Additionally, more research into decimating the impulse response without losing quality could be performed so that this system could be better utilized in real-time systems.
 
 \clearpage
 \begin{appendix}
