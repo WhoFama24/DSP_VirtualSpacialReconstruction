@@ -53,7 +53,7 @@
 
 % Info
 \title{
-    Virtual Reconstruction of Spacial Reverberation \\
+    Virtual Reconstruction of spatial Reverberation \\
     \Large{Graduate Project Report}
 }
 \author{
@@ -83,14 +83,14 @@ For system performance analysis, the output of the artificial space is compared 
 
 \Needspace{10\baselineskip}
 \section{Introduction}
-The objective of this project is to design a system to artificially reconstruct the spacial presence of an environment using the environment's impulse response.
+The objective of this project is to design a system to artificially reconstruct the spatial presence of an environment using the environment's impulse response.
 This system has applications in virtual reality \cite{beig2018scalable} where realistic acoustic feedback is necessary for improving the user experience.
 Additionally, the system could be applied in live audio performances where the audio engineer must consider the frequency response of the environment.
 According to Johnson and Lee \cite{johnsonperceptually}, proper reverb is crucial to the improved subjective quality of a sound.
 Designing a system to artificially reconstruct an environment requires capturing the impulse response and artificially reconstructing the sound.
 
     \subsection*{Capturing the Impulse Response of a Space}
-    The impulse response of the environment is critical to the process of reconstructing its spacial presence.
+    The impulse response of the environment is critical to the process of reconstructing its spatial presence.
     Capturing the impulse response is a two-part process --- generate an acoustical impulse and measure the response of the space.
     An acoustical impulse needs to be a nearly instantaneous burst of sound.
     There are specialized devices to generate an acoustical impulse, but these devices are costly and usually impractical for the identified applications of this system.
@@ -107,7 +107,7 @@ Designing a system to artificially reconstruct an environment requires capturing
 
 \Needspace{10\baselineskip}
 \section{Methodology \& Theory}
-Using Octave, the spacial presence of five locations is artificially reconstructed.
+Using Octave, the spatial presence of five locations is artificially reconstructed.
 Each environment has an infinite impulse response (IIR) that defines the reverberation that occurs in the space.
 Since this impulse response is infinite in length and cannot be captured by a digital signal processing system, the objective of this experiment is to determine a FIR filter that approximates the impulse response of the IIR filter.
 An FIR approximation of each space is obtained by inputting a impulse in the space and recording the output using a microphone.
@@ -137,7 +137,7 @@ The following is an equipment list used for this project:
 The first step to measuring the RIR is to determine the noise floor of the room and the microphone.
 This is accomplished by observing the output of the room when there is no input.
 Using identical balloons filled to the same circumference, the balloon pop simulates the impulse input into each space.
-To prevent uneven spacial effects, the balloon and microphone are colocated in the center of the space.
+To prevent uneven spatial effects, the balloon and microphone are colocated in the center of the space.
 An operator pops the balloon above the microphone using a sharp needle while standing an arm's length away.
 The microphone records the response of the room.
 The operator is not colocated with the microphone and the balloon to prevent distortions in the reverbation.
@@ -145,11 +145,11 @@ The microphone records the impulse response until the room returns to a threshol
 This process determines a large FIR filter for the space and is repeated three times for each location.
 
 After measuring the RIR and the space has returned to its noise floor, each audio input sample is played and the output of the room recorded on the microphone.
-To prevent spacial distortions, the audio input sample is played through a single speaker colocated under the microphone.
+To prevent spatial distortions, the audio input sample is played through a single speaker colocated under the microphone.
 Both the speaker and the microphone are positioned such that the focus of the output/input is upward.
 This process is repeated for each location.
 
-After collecting the RIR for each space, Octave is used to convolve each audio input sample with each spacial impulse response.
+After collecting the RIR for each space, Octave is used to convolve each audio input sample with each spatial impulse response.
 This provides a set of simulated outputs versus a set of real outputs for each location.
 Qualitative and quantitative measurements were obtained comparing the simulated and real outputs, which is discussed in the following section.
 
@@ -255,7 +255,7 @@ A nonlinearity in the speaker would generate some differences in the real output
 Secondly, for the sake of code simplicity, the third impulse response was chosen for each location because it was generally representative of the set.
 However, a better method of selection would have been to simulate each input sample with each impulse response at each location and then select the impulse response with the minimum MSE.
 
-Overall, the results of this experiment are a good starting point for attempting to accurately simulate the spacial effects of a space.
+Overall, the results of this experiment are a good starting point for attempting to accurately simulate the spatial effects of a space.
 Further work could be performed in this area to determine if a correlation exists between MSE and the quality of the simulation, and if there are any other factors that affect the quality.
 Additionally, more research into decimating the impulse response without losing quality could be performed so that this system could be better utilized in real-time systems.
 
@@ -265,7 +265,7 @@ Additionally, more research into decimating the impulse response without losing 
 \label{appendix:resources}
 The code and data used in this project is located in the following GitHub repository:
 
-\href{https://github.com/WhoFama24/DSP_VirtualSpacialReconstruction}{DSP\_VirtualSpacialReconstruction}
+\href{https://github.com/WhoFama24/DSP_VirtualspatialReconstruction}{DSP\_VirtualspatialReconstruction}
 
 \section{Location Photos}
 \label{appendix:locationPhotos}
