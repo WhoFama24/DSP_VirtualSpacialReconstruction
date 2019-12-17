@@ -79,7 +79,7 @@ synthesized version of the output from Matlab.
 To provide a variety of reverberation scenarios, the RIR is captured from the
 following locations:
 
-- Eric Farmer's Living room
+- Apartment Living room
 - Simrall Hall Anechoic Chamber
 - Simrall Hall Stairwell
 - MSU SSRC Foyer
